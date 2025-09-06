@@ -6,8 +6,8 @@ RUN mvn -B -q -DskipTests dependency:go-offline
 COPY src ./src
 RUN mvn -B -q -DskipTests package
 
-# Chạy Tomcat 11 và deploy WAR làm ROOT
-FROM tomcat:11.1-jdk17-temurin
+# Chạy Tomcat 10 và deploy WAR làm ROOT
+FROM tomcat:10.1-jdk17-temurin
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
